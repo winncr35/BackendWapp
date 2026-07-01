@@ -1,6 +1,5 @@
 import express from 'express';
 import apiRoutes from './routers/api';
-import webRoutes from './routers/web';
 import cors from 'cors';
 
 // const express = require('express')
@@ -22,7 +21,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
 //config router
 apiRoutes(app)
-webRoutes(app)
+
 
 
 app.listen(port, () => {

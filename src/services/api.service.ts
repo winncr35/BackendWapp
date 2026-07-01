@@ -21,6 +21,14 @@ const handleGetAllUsers = async () => {
     const allUsers = await prisma.user.findMany();
     return allUsers;
 }
+const handleGetUserById = async (id: string) => {
+    const user = await prisma.user.findUnique({
+        where: {
+            id: +id
+        }
+    });
+    return user;
+}
 const handleDeleteUser = async (id: string) => {
     const deletedUser = await prisma.user.delete({
         where: {
@@ -42,4 +50,4 @@ const handleUpdateUser = async (id: string, name: string, email: string, address
     });
     return updatedUser;
 }
-export { registerNewUser, handleGetAllUsers, handleDeleteUser, handleUpdateUser }
+export { registerNewUser, handleGetAllUsers, handleGetUserById, handleDeleteUser, handleUpdateUser }
